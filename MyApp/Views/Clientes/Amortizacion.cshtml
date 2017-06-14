@@ -1,0 +1,66 @@
+﻿@model IEnumerable<MyApp.Models.Amortizacion>
+
+@{
+    ViewBag.Title = "Amortizacion";
+    int x = 0;
+}
+
+<h2>Amortizacion</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Periodos
+        </th>
+        <th>
+            Inicial
+        </th>
+        <th>
+            Interes
+        </th>
+        <th>
+            Amortizacion
+        </th>
+        <th>
+            Cuota
+        </th>
+        <th>
+            Final
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pagos)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.montoInicial)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Interes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amort)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cuota)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.montoFinal)
+            </td>
+        </tr>
+    }
+</table>
+
+@foreach(var item2 in Model)
+{
+    x++;
+    @Html.ActionLink("Regresar","Prestamos","Clientes",new { Cedula = item2.Cedula },null)
+    if(x == 1)
+    {
+        break;
+    }
+}
+

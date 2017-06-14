@@ -1,0 +1,47 @@
+﻿  @model MyApp.Models.Prestamos
+@{
+    ViewBag.Title = "Informacion";
+}
+
+<h2>Informacion</h2>
+<div>
+    <h4>Prestamos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Cantidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cantidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pagos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pagos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Motivo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Motivo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cedula)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cedula)
+        </dd>
+
+    </dl>
+</div>
+<p> |
+    @Html.ActionLink("Regresar", "Prestamos", "Clientes", new { cedula = Model.Cedula }, null) |
+</p>

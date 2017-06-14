@@ -1,0 +1,65 @@
+﻿@model IEnumerable<MyApp.Models.Prestamos>
+
+@{
+    ViewBag.Title = "Prestamos";
+    var i = 0;
+}
+
+<h2>Prestamos</h2>
+
+<p>
+    @Html.ActionLink("Regresar", "Index", "Clientes")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Cantidad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pagos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Motivo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cedula)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cantidad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pagos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Motivo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cedula)
+        </td>
+        <td>
+            |
+            @Html.ActionLink("Informacion","Informacion","Clientes", new { id=item.Id }, null) | 
+            @Html.ActionLink("Amortizacion", "Amortizacion", "Clientes", new {Id = item.Id, Cantidad = item.Cantidad, Pagos = item.Pagos, Cedula = item.Cedula }, null) |
+        </td>
+    </tr>
+}
+
+</table>
+<p>
+ 
+    @foreach (var item2 in Model)
+    {
+
+    @Html.ActionLink("Crea un prestamo", "Create", "Prestamos", new { Cedula = item2.Cedula }, null)
+        i++;
+        if(i == 1)
+        {
+            break;
+        }
+    }
+</p>
